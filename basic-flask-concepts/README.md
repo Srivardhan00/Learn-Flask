@@ -76,7 +76,54 @@ def numberCheck(num):
 def addNumbers(num1, num2):
     return f"<h3>Sum is {num1 + num2}</h3>"
 ```
+### URL Redirection
+- We use redirect method from flask to redirect from 1 page to another
+```python
+from flask import Flask, redirect
 
+@app.route("/student/pass")
+def passed():
+    return f"<h1>You have passed the exam</h1>"
+
+@app.route("/student/fail")
+def failed():
+    return f"<h1>You have failed the exam</h1>"
+
+@app.route("/check/<int:num>")
+def check(num):
+    if num >= 35:
+        return redirect('http://127.0.0.1:5000/student/pass')
+    else:
+        return redirect('http://127.0.0.1:5000/student/fail')
+```
+### Using url_for method in redirection
+- Generate a URL to the given endpoint with the given values.
+- Here the endpoint passed is the function for which url_for provides the respective url.
+```python
+from flask import Flask, redirect, url_for
+@app.route("/check/<int:num>")
+def check(num):
+    if num>=35:
+        return redirect(url_for("passed"))
+    return redirect(url_for("failed"))
+```
+
+### Passing parameters through url_for
+```python
+@app.route("/pass/<name>/<int:marks>")
+def passed(name, marks):
+    return f"{name.title()} passed with {marks} marks"
+
+@app.route("/fail/<name>/<int:marks>")
+def failed(name, marks):
+    return f"{name.title()} failed with {marks} marks"
+
+@app.route("/check/<name>/<int:num>")
+def check(name, num):
+    if num>=35:
+        return redirect(url_for("passed", name= name,marks= num))
+    return redirect(url_for("failed", name= name,marks= num))
+```
 ## Additional Best Practices
 
 - **HTML in Routes**: For larger projects, use templates instead of hard-coding HTML in route functions.

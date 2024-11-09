@@ -1,0 +1,15 @@
+<!-- This page is used to check whether a number is 0, less than 100 or greater -->
+
+{% extends "parent.html" %}
+{% block content %}
+    <h3>The Entered Number is {{num}}</h3>
+    <div>
+        {% if num==0 %}
+            <p>The number is zero</p>
+        {% elif num>100 %}
+            <p>The number is greater than 100</p>
+        {% else %}
+            <p>The number is less than or equal to 100</p>
+        {% endif %}
+    </div>
+{% endblock %}

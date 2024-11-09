@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+  </head>
+  <body>
+    <!-- <h2>This is the home page</h2> -->
+    <h2>This is the home page, and today is {{day}}</h2>
+    <ul>
+      <li><a href="{{ url_for('child1') }}">Child 1</a></li>
+      <li><a href="{{ url_for('eval', num = 0) }}">Evaluate 0</a></li>
+      <li><a href="{{ url_for('employees') }}">All Employees</a></li>
+      <li>
+        <a href="{{ url_for('employees_filtered', position='Manager') }}"
+          >Managers</a
+        >
+      </li>
+      <li>
+        <a href="{{ url_for('employees_filtered',position = 'Salesperson') }}"
+          >Salespersons</a
+        >
+      </li>
+    </ul>
+  </body>
+</html>

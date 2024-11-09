@@ -1,0 +1,17 @@
+{% extends "parent.html" %} 
+
+{% block title %}Employees List{% endblock %}
+{% block header %}<h2>Employee Directory</h2>{% endblock %}
+{% block content %}
+<h3>All {{ position.title() }}s</h3>
+<table>
+    {% for emps, emp_info in info.items() %}
+        {% if emp_info['position'].lower() == position.lower() %}
+            <tr>
+                <td>{{ emp_info['name'] }}</td>
+                <td>{{ emp_info['age'] }}</td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+</table>
+{% endblock %}

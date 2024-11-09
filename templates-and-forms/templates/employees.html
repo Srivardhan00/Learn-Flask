@@ -1,0 +1,13 @@
+{% extends "parent.html" %} 
+{% block title %} {{ title }} {% endblock %} 
+{% block content %}
+<table>
+  {% for emp_no, emp_data in info.items() %}
+  <tr>
+    <td>Name : {{ emp_data['name'] }}</td>
+    <td>Position : {{ emp_data['position'] }}</td>
+    <td>Age : {{ emp_data['age'] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock content %}
